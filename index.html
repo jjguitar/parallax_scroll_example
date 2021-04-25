@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Scrolling</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="header">
+    <a href="#" class="logo">Logo</a>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </header>
+  <section>
+    <img src="./img/stars.png" alt="stars" id="stars">
+    <img src="./img/moon (1).png" alt="moon" id="moon" class="moon">
+    <img src="./img/mountains_behind.png" alt="mountains_behind" id="mountains_behind">
+    <h2 id="text">Moon light</h2>
+    <a href="#sec" class="btn" id="btn">Explorer</a>
+    <img src="./img/mountains_front.png" alt="mountains_front" id="mountains_front">
+  </section>
+  <div class="sec" id="sec">
+    <h2>Parallax Scrolling Effects</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta itaque, laboriosam nobis suscipit, iure velit nemo, accusantium recusandae asperiores deserunt enim incidunt odio rerum! Quo sint dicta tenetur laboriosam excepturi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br><br>Aspernatur, vero eum quo accusamus itaque esse voluptatum autem illo! Voluptatibus magni odio similique id maxime non in dignissimos magnam nam natus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto illum necessitatibus corrupti consequuntur rem nemo accusantium nam facilis rerum! Est quo quisquam id numquam amet sed minima itaque eaque! <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta itaque, laboriosam nobis suscipit, iure velit nemo, accusantium recusandae asperiores deserunt enim incidunt odio rerum! Quo sint dicta tenetur laboriosam excepturi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br><br>Aspernatur, vero eum quo accusamus itaque esse voluptatum autem illo! Voluptatibus magni odio similique id maxime non in dignissimos magnam nam natus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto illum necessitatibus corrupti consequuntur rem nemo accusantium nam facilis rerum! Est quo quisquam id numquam amet sed minima itaque eaque! <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta itaque, laboriosam nobis suscipit, iure velit nemo, accusantium recusandae asperiores deserunt enim incidunt odio rerum! Quo sint dicta tenetur laboriosam excepturi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br><br>Aspernatur, vero eum quo accusamus itaque esse voluptatum autem illo! Voluptatibus magni odio similique id maxime non in dignissimos magnam nam natus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto illum necessitatibus corrupti consequuntur rem nemo accusantium nam facilis rerum! Est quo quisquam id numquam amet sed minima itaque eaque! <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta itaque, laboriosam nobis suscipit, iure velit nemo, accusantium recusandae asperiores deserunt enim incidunt odio rerum! Quo sint dicta tenetur laboriosam excepturi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br><br>Aspernatur, vero eum quo accusamus itaque esse voluptatum autem illo! Voluptatibus magni odio similique id maxime non in dignissimos magnam nam natus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto illum necessitatibus corrupti consequuntur rem nemo accusantium nam facilis rerum! Est quo quisquam id numquam amet sed minima itaque eaque! <br><br></p>
+  </div>
+  <script>
+    let stars = document.getElementById("stars");
+    let moon = document.getElementById("moon");
+    let mountains_behind = document.getElementById("mountains_behind");
+    let mountains_front = document.getElementById("mountains_front");
+    let text = document.getElementById("text");
+    let btn = document.getElementById("btn");
+    let sec = document.getElementById("sec");
+    let header = document.getElementById("header");
+
+
+    let moonSize = document.getElementsByClassName('moon')
+    let sec2 = document.getElementsByClassName('sec')
+    let screenSize = window.innerHeight;
+    
+    
+
+    window.addEventListener('scroll' , () => {
+      console.log(`screenSize ${screenSize}`)
+      for(var i = 0; i < sec2.length; i++) {
+        let element = moonSize[i];
+        let element2 = sec2[i];
+        console.log(element.getBoundingClientRect().bottom)
+        console.log(element2.getBoundingClientRect().top)
+      
+        let value = window.scrollY;
+        if (element2.getBoundingClientRect().top > 0) {
+          stars.style.left = value * 0.25 + 'px'
+          moon.style.top = value * 1.05 + 'px'
+          mountains_behind.style.top = value * 0.5 + 'px'
+          mountains_front.style.top = value * 0 + 'px'
+          text.style.marginRight = value * 4 + 'px'
+          text.style.marginTop = value * 1.5 + 'px'
+          btn.style.marginTop = value * 1.7 + 'px'
+          header.style.top = value * 0.5 + 'px'
+        }
+
+      }
+    });
+  </script>
+</body>
+</html>
